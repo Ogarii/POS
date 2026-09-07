@@ -44,3 +44,23 @@ Printing is broken into three simple steps:
 
 * **Logic & Unit Tests**: All calculations, formatting logic, and unit tests pass cleanly.
 * **Hardware Connection**: Physical Bluetooth printer connections and statuses could not be tested on an actual device due to missing hardware. However, the implementation uses proven code from previous projects, ensuring it will connect and function correctly once configured with a physical printer. Unit tests fully verify the layout rendering logic.
+
+---
+
+## Build & Installation
+
+### Prerequisites
+* **Android Studio**: Ladybug (or newer recommended)
+* **JDK**: Version 17 or 11 (Project configured for Java 11 compatibility)
+* **Android SDK**: API level 24 (min) to 37 (target)
+
+### Build Instructions
+1. **Open Project**: Import the project into Android Studio.
+2. **Gradle Sync**: Perform a Gradle sync to download all necessary libraries and modules (`:app` and `:core`).
+3. **Build APK**: Use `Build > Build Bundle(s) / APK(s) > Build APK(s)` in the IDE.
+   * *Command Line*: Run `./gradlew assembleDebug` to generate the debug APK.
+
+### Installation Instructions
+1. **Enable Debugging**: Ensure USB Debugging is enabled on your Android device.
+2. **Run App**: Click the **Run** button in Android Studio to automatically build, install, and launch the app on your connected device or emulator.
+3. **Manual Sideload**: Locating the APK in `app/build/outputs/apk/debug/app-debug.apk`, transfer it to your device and open it to install.
