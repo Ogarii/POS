@@ -10,12 +10,11 @@ value class Money(val minorUnits: Long) : Comparable<Money> {
 
     companion object {
         private const val DECIMALS = 2
-        private val FACTOR = BigDecimal.TEN.pow(DECIMALS)
 
         val KES: Currency = Currency.getInstance("KES")
         val ZERO = Money(0L)
 
-        fun fromMajor(amount: Double) = Money((amount * 100).toLong())
+        fun fromMajor(amount: Double) = Money(BigDecimal.valueOf(amount).setScale(2, RoundingMode.HALF_EVEN).movePointRight(2).longValueExact())
 
         fun parseDecimalString(s: String): Money {
             val amount = s.trim().toBigDecimalOrNull() ?: BigDecimal.ZERO
